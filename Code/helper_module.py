@@ -16,7 +16,7 @@ def car_list_def(number_of_parking_spots, available_colors_list, dict1, seed):
 
     car_list = []
     i = 0
-    while i < number_of_parking_spots:  # while loop filling list2 randomly, and making sure the list is solvable. *read Note#1*
+    while i < number_of_parking_spots:  # Making sure the list is solvable. *read Note#1*
         r = random.choice(available_colors_list)
         if dict1[r] == 0:
             available_colors_list.remove(r)

@@ -26,10 +26,6 @@ def ac_bttn():
 def on_closing():
         sys.exit(0)
 
-############################################################
-############################################################
-############################################################
-
 tuple_canvas = [os.path.abspath('Code Images\parking_lot_layout_zoneA.png'),
                 os.path.abspath('Code Images\parking_lot_layout_zoneB.png'),
                 os.path.abspath('Code Images\parking_lot_layout_zoneC.png'),
@@ -56,18 +52,13 @@ waiting_cars_spots = ((1080, 11), (1130, 11), (1180, 11), (1230, 11), (1280, 11)
 
 all_colors_tuple = ('red', 'blue', 'green', 'yellow', 'indigo', 'orange', 'violet')
 
-############################################################
-############################################################
-############################################################
-
 conf_lot_window = Tk()
 conf_lot_window.title("Car Parking Lot")
 conf_lot_window.iconbitmap(default=os.path.abspath('Code Images\parking_sign.ico'))
 conf_lot_window.attributes("-topmost", True)
 conf_lot_window.configure(width=500, height=300, background='#023047')
 conf_lot_window.resizable(0, 0) #Don't allow resizing the window.
-# Fixing Geometry.
-conf_lot_window.geometry('500x400')
+conf_lot_window.geometry('500x400') # Fixing Geometry.
 conf_lot_window.eval('tk::PlaceWindow . center')
 
 conf_lot_window.protocol("WM_DELETE_WINDOW", on_closing)
@@ -119,11 +110,7 @@ Button(button_border2, bg='#023047', fg="#8ecae6", width=16, height=1, text='FOR
 button_border3 = Frame(frame2, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
                        highlightthickness=3).place(x=319, y=353)
 Button(button_border3, bg='#023047', fg="#8ecae6", width=16, height=1, text='ARC CONSISTENCY', font=("Arial", 8, 'bold'), 
-                       command=lambda: (conf_lot_window.destroy(), ac_bttn())).place(x=320, y=355) #, ac_bttn()
-
-#Label(conf_lot_window, text="Seed", bg="#023047", fg="#8ecae6", anchor=CENTER, font=('', 10, 'bold')).place(x=50, y=0)
-
-
+                       command=lambda: (conf_lot_window.destroy(), ac_bttn())).place(x=320, y=355)
 
 conf_lot_window.mainloop()
 
@@ -133,11 +120,6 @@ seed = input3.get()
 
 if seed == '':
     seed = random.randint(1, 1000000000)
-print('SEED= ', seed)
-
-############################################################
-############################################################
-############################################################
 
 lot_window = Tk()
 lot_window.title("Car Parking Lot")
@@ -164,10 +146,6 @@ empty_spot_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Image
 parking_lot_image = PhotoImage(file=tuple_canvas[number_of_zones - 1])
 lw_canvas.create_image(0, 150, anchor=NW, image=parking_lot_image)
 
-############################################################
-############################################################
-############################################################
-
 number_of_parking_spots = number_of_zones * 10
 
 available_colors_list = available_colors_list_def(number_of_colors, all_colors_tuple)
@@ -177,52 +155,12 @@ dict1 = {'red': max_num, 'blue': max_num, 'green': max_num, 'yellow': max_num, '
 
 car_list = car_list_def(number_of_parking_spots, available_colors_list, dict1, seed)
 
-###########################################
-
-""" car_list = ['red', 'red', 'red', 'red', 'red', 'red', 'red',
-            'blue', 'blue', 'blue', 'blue', 'blue',
-            'green', 'green', 'green', 'green', 'green', 'green',
-            'yellow', 'yellow'] """
-
-""" car_list = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-            'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-            'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green', 'green',
-            'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow']  """
-
-""" car_list = ['indigo', 'red', 'yellow', 'green', 'blue', 'green', 'yellow', 'yellow', 'blue', 'green', 'blue', 
-            'blue', 'yellow', 'blue', 'red', 'red', 'green', 'yellow', 'blue', 'green', 'yellow', 'yellow', 'yellow', 
-            'red', 'green', 'green', 'yellow', 'yellow', 'green', 'blue'] """
-
-""" car_list = ['red', 'red', 'red', 'red', 'red',
-            'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-            'green', 'green', 'green',
-            'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow'] """ 
-
-""" car_list = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-            'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-            'green', 'green', 'green', 'green',
-            'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow', 'yellow',
-            'indigo', 'indigo', 'indigo', 'indigo', 'indigo',
-            'orange', 'orange', 'orange', 'orange', 'orange', 'orange', 'orange', 'orange', 'orange', 'orange',
-            'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet', 'violet'] """
-
-###########################################
-
 car_image_dict = {'red': red_car_image, 'blue': blue_car_image, 'green': green_car_image, 'yellow': yellow_car_image,
                   'indigo': indigo_car_image, 'orange': orange_car_image, 'violet': violet_car_image}
 
 color_dict = {1: 'red', 2: 'blue', 3: 'green', 4: 'yellow', 5: 'indigo', 6: 'orange', 7: 'violet'}
 
 number_of_colors_left_dict = number_of_colors_left_dict_def(color_dict, car_list)
-
-print()
-print('car_list: ', car_list)
-print('number_of_colors_left: ', number_of_colors_left_dict)
-print()
-
-############################################################
-############################################################
-############################################################
 
 waiting_cars_temp = []
 index = []
@@ -245,10 +183,6 @@ while i <= number_of_colors:
         "Arial", 25), fill=color_dict[i], text=number_of_colors_left_dict[i])
     i += 1
 lw_canvas.update()
-
-############################################################
-############################################################
-############################################################
 
 def display_results(status, start, fill_color='green'):
 
@@ -298,10 +232,6 @@ def display_results(status, start, fill_color='green'):
     Button(result_canvas, bg='#023047', fg="#8ecae6", width=16, height=1, text='Exit', font=("Arial", 8, 'bold'), 
                        command=lambda: (result_window.destroy(), lot_window.destroy())).place(x=260, y=250)
 
-    print('Calls= \n', calls)
-    print('-=-=-=-=-=-=-=-=-END OF RUN-=-=-=-=-=-=-=-=-')
-
-
     result_window.mainloop()
 
 def Backtraking(assigned_spots_list, spot_no=0):
@@ -317,22 +247,18 @@ def Backtraking(assigned_spots_list, spot_no=0):
         
         key = i
         value = number_of_colors_left_dict[key]
-
         if value != 0:
             color = color_dict[key]
             if isSafe(spot_no, assigned_spots_list, color):
                 assigned_spots_list[spot_no].color = color
                 number_of_colors_left_dict[key] -= 1
 
-                ### ADD CAR IN WINDOW ###
                 temp = lw_canvas.create_image(all_parking_spots[spot_no][0], all_parking_spots[spot_no][1], anchor=NW, image=car_image_dict[color])
                 #time.sleep(0.6)
                 lw_canvas.update()
-                ### ADD CAR IN WINDOW ###
                 
                 for c in range(number_of_parking_spots-1, -1, -1):
                     if waiting_cars_temp[c][1] == color:
-                        #print("HIIIIIIIIIIII!!!!!!")
                         temp2 = waiting_cars_temp[c][0]
                         lw_canvas.itemconfig(temp2, image=empty_spot_image)
                         waiting_cars_temp[c][1] = 'empty'
@@ -346,15 +272,12 @@ def Backtraking(assigned_spots_list, spot_no=0):
                     assigned_spots_list[spot_no].color = None
                     number_of_colors_left_dict[key] += 1
 
-                    ### REMOVE CAR IN WINDOW ###
                     lw_canvas.itemconfig(temp, image=empty_spot_image)
                     #time.sleep(0.6)
                     lw_canvas.update()
-                    ### REMOVE CAR IN WINDOW ###
 
                     for c in range(number_of_parking_spots):
                         if waiting_cars_temp[c][1] == 'empty':
-                            #print("HIIIIIIIIIIII!!!!!!")
                             temp2 = waiting_cars_temp[c][0]
                             lw_canvas.itemconfig(temp2, image=car_image_dict[color])
                             waiting_cars_temp[c][1] = color
@@ -378,40 +301,26 @@ def ForwardChecking(assigned_spots_list, spot_no=0):
         
         key = i
         value = number_of_colors_left_dict[key]
-
         if value != 0:
             color = color_dict[key]
             if value == 1:
                 if is_there_an_empty_domain(spot_no, assigned_spots_list, color):
-                    #assigned_spots_list[spot_no].color = None
-                    #number_of_colors_left_dict[key] += 1
-                    #return False 
                     i += 1
                     continue 
 
-            #if value == 1 and assigned_spots_list[-2].color != None:
             if check_domains(spot_no, assigned_spots_list, color):
                 if isSafe(spot_no, assigned_spots_list, color): # 
                     assigned_spots_list[spot_no].color = color
                     number_of_colors_left_dict[key] -= 1
 
-                    """ if value == 1:
-                        if remove_finshed_color(spot_no, assigned_spots_list, color) == False:
-                            assigned_spots_list[spot_no].color = None
-                            number_of_colors_left_dict[key] += 1
-                            return False  """
-
                     update_value_domain(spot_no, assigned_spots_list, color, 'remove')
 
-                    ### ADD CAR IN WINDOW ###
                     temp = lw_canvas.create_image(all_parking_spots[spot_no][0], all_parking_spots[spot_no][1], anchor=NW, image=car_image_dict[color])
                     #time.sleep(0.6)
                     lw_canvas.update()
-                    ### ADD CAR IN WINDOW ###
 
                     for c in range(number_of_parking_spots-1, -1, -1):
                         if waiting_cars_temp[c][1] == color:
-                            #print("HIIIIIIIIIIII!!!!!!")
                             temp2 = waiting_cars_temp[c][0]
                             lw_canvas.itemconfig(temp2, image=empty_spot_image)
                             waiting_cars_temp[c][1] = 'empty'
@@ -427,15 +336,12 @@ def ForwardChecking(assigned_spots_list, spot_no=0):
                         assigned_spots_list[spot_no].color = None
                         number_of_colors_left_dict[key] += 1
 
-                        ### REMOVE CAR IN WINDOW ###
                         lw_canvas.itemconfig(temp, image=empty_spot_image)
                         #time.sleep(0.6)
                         lw_canvas.update()
-                        ### REMOVE CAR IN WINDOW ###
 
                         for c in range(number_of_parking_spots):
                             if waiting_cars_temp[c][1] == 'empty':
-                                #print("HIIIIIIIIIIII!!!!!!")
                                 temp2 = waiting_cars_temp[c][0]
                                 lw_canvas.itemconfig(temp2, image=car_image_dict[color])
                                 waiting_cars_temp[c][1] = color
@@ -445,8 +351,6 @@ def ForwardChecking(assigned_spots_list, spot_no=0):
 
         i += 1
     return False
-
-
 
 def ArcConsistency(assigned_spots_list, spot_no=0):
 
@@ -461,28 +365,17 @@ def ArcConsistency(assigned_spots_list, spot_no=0):
         
         key = i
         value = number_of_colors_left_dict[key]
-
         if value != 0:
             color = color_dict[key]
             if value == 1:
                 if is_there_an_empty_domain(spot_no, assigned_spots_list, color):
-                    #assigned_spots_list[spot_no].color = None
-                    #number_of_colors_left_dict[key] += 1
-                    #return False 
                     i += 1
                     continue 
 
-            #if value == 1 and assigned_spots_list[-2].color != None:
             if check_domains(spot_no, assigned_spots_list, color):
                 if isSafe(spot_no, assigned_spots_list, color): # 
                     assigned_spots_list[spot_no].color = color
                     number_of_colors_left_dict[key] -= 1
-
-                    """ if value == 1:
-                        if remove_finshed_color(spot_no, assigned_spots_list, color) == False:
-                            assigned_spots_list[spot_no].color = None
-                            number_of_colors_left_dict[key] += 1
-                            return False  """
 
                     update_value_domain(spot_no, assigned_spots_list, color, 'remove')
                     
@@ -500,15 +393,12 @@ def ArcConsistency(assigned_spots_list, spot_no=0):
                                             i += 1
                                             continue
 
-                    ### ADD CAR IN WINDOW ###
                     temp = lw_canvas.create_image(all_parking_spots[spot_no][0], all_parking_spots[spot_no][1], anchor=NW, image=car_image_dict[color])
                     #time.sleep(0.6)
                     lw_canvas.update()
-                    ### ADD CAR IN WINDOW ###
 
                     for c in range(number_of_parking_spots-1, -1, -1):
                         if waiting_cars_temp[c][1] == color:
-                            #print("HIIIIIIIIIIII!!!!!!")
                             temp2 = waiting_cars_temp[c][0]
                             lw_canvas.itemconfig(temp2, image=empty_spot_image)
                             waiting_cars_temp[c][1] = 'empty'
@@ -524,15 +414,12 @@ def ArcConsistency(assigned_spots_list, spot_no=0):
                         assigned_spots_list[spot_no].color = None
                         number_of_colors_left_dict[key] += 1
 
-                        ### REMOVE CAR IN WINDOW ###
                         lw_canvas.itemconfig(temp, image=empty_spot_image)
                         #time.sleep(0.6)
                         lw_canvas.update()
-                        ### REMOVE CAR IN WINDOW ###
 
                         for c in range(number_of_parking_spots):
                             if waiting_cars_temp[c][1] == 'empty':
-                                #print("HIIIIIIIIIIII!!!!!!")
                                 temp2 = waiting_cars_temp[c][0]
                                 lw_canvas.itemconfig(temp2, image=car_image_dict[color])
                                 waiting_cars_temp[c][1] = color
@@ -543,63 +430,76 @@ def ArcConsistency(assigned_spots_list, spot_no=0):
         i += 1
     return False
 
-
-
 def run_backtaking():
     start = time.time()
     assigned_spots_list = assigned_spots_list_def(number_of_parking_spots, number_of_colors, algo)
     if Backtraking(assigned_spots_list):
-        print('SUCCESS!!!')
-        print()
+        print('SUCCESS!!!', end='\n')
     
         display_results('SUCCESS!', start)
         for i in range(len(assigned_spots_list)):
             print(str(i), assigned_spots_list[i].color)
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
     else:
         print('FAILURE???')
         display_results('FAILURE!', start, fill_color='red') 
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
 
 def run_forward_checking():
     start = time.time()
     assigned_spots_list = assigned_spots_list_def(number_of_parking_spots, number_of_colors, algo)
     if ForwardChecking(assigned_spots_list):
-        print('SUCCESS!!!')
-        print()
+        print('SUCCESS!!!', end='\n')
 
         display_results('SUCCESS!', start)
         for i in range(len(assigned_spots_list)):
             print(str(i), assigned_spots_list[i].color)
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
     else:
         print('FAILURE???')
         display_results('FAILURE!', start, fill_color='red') 
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
 
 def run_arc_consistency():
     start = time.time()
     assigned_spots_list = assigned_spots_list_def(number_of_parking_spots, number_of_colors, algo)
     if ArcConsistency(assigned_spots_list):
-        print('SUCCESS!!!')
-        print()
+        print('SUCCESS!!!', end='\n')
 
         display_results('SUCCESS!', start)
         for i in range(len(assigned_spots_list)):
             print(str(i), assigned_spots_list[i].color)
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
     else:
         print('FAILURE???')
         display_results('FAILURE!', start, fill_color='red')
+        print('-=-=-=-=-=-=-=-=-END-=-=-=-=-=-=-=-=-')
 
 if algo == 'BACKTRACKING':
-    print("BACKTRACKING Running... ")
-    print()
+    print('-=-=-=-=-=-=-=-=-START-=-=-=-=-=-=-=-=-')
+    print("BACKTRACKING Running... \n")
+    print('--> SEED: ', seed, end='\n')
+    print('--> car_list: ', car_list, end='\n')
+    print('--> number_of_colors_left: ', number_of_colors_left_dict, end='\n')
+    print('--> Calls: ', calls)
     run_backtaking()
 
 elif algo == 'FORWARD_CHECKING':
+    print('-=-=-=-=-=-=-=-=-START-=-=-=-=-=-=-=-=-')
     print("FORWARD_CHECKING Running... ")
-    print()
+    print('--> SEED: ', seed, end='\n')
+    print('--> car_list: ', car_list, end='\n')
+    print('--> number_of_colors_left: ', number_of_colors_left_dict, end='\n')
+    print('--> Calls: ', calls)
     run_forward_checking()
 
 elif algo == 'ARC_CONSISTENCY':
+    print('-=-=-=-=-=-=-=-=-START-=-=-=-=-=-=-=-=-')
     print("ARC_CONSISTENCY Running... ")
-    print()
+    print('--> SEED: ', seed, end='\n')
+    print('--> car_list: ', car_list, end='\n')
+    print('--> number_of_colors_left: ', number_of_colors_left_dict, end='\n')
+    print('--> Calls: ', calls)
     run_arc_consistency()
 
 lot_window.mainloop()
