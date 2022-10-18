@@ -26,12 +26,12 @@ def ac_bttn():
 def on_closing():
         sys.exit(0)
 
-tuple_canvas = [os.path.abspath('Code Images\parking_lot_layout_zoneA.png'),
-                os.path.abspath('Code Images\parking_lot_layout_zoneB.png'),
-                os.path.abspath('Code Images\parking_lot_layout_zoneC.png'),
-                os.path.abspath('Code Images\parking_lot_layout_zoneD.png'),
-                os.path.abspath('Code Images\parking_lot_layout_zoneE.png'),
-                os.path.abspath('Code Images\parking_lot_layout_zoneF.png')]
+tuple_canvas = [os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneA.png'),
+                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneB.png'),
+                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneC.png'),
+                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneD.png'),
+                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneE.png'),
+                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneF.png')]
 
 all_parking_spots = ((35, 188), (87, 188), (139, 188), (191, 188), (243, 188), (35, 295), (87, 295), (139, 295), (191, 295), (243, 295),
                      (408, 188), (460, 188), (512, 188), (564, 188), (616, 188), (408, 295), (460, 295), (512, 295), (564, 295), (616, 295),
@@ -54,63 +54,47 @@ all_colors_tuple = ('red', 'blue', 'green', 'yellow', 'indigo', 'orange', 'viole
 
 conf_lot_window = Tk()
 conf_lot_window.title("Car Parking Lot")
-conf_lot_window.iconbitmap(default=os.path.abspath('Code Images\parking_sign.ico'))
+conf_lot_window.iconbitmap(default=os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_sign.ico'))
 conf_lot_window.attributes("-topmost", True)
-conf_lot_window.configure(width=500, height=300, background='#023047')
+conf_lot_window.configure(width=500, height=300)
 conf_lot_window.resizable(0, 0) #Don't allow resizing the window.
 conf_lot_window.geometry('500x400') # Fixing Geometry.
 conf_lot_window.eval('tk::PlaceWindow . center')
 
 conf_lot_window.protocol("WM_DELETE_WINDOW", on_closing)
 
-frame1 = Frame(conf_lot_window, width=200, height=100, background="#023047", highlightbackground="#8ecae6",
-               highlightthickness=2).place(x=150, y=20)
-frame2 = Frame(conf_lot_window, width=200, height=100, background="#023047", highlightbackground="#8ecae6", 
-               highlightthickness=2).place(x=150, y=140)
-frame3 = Frame(conf_lot_window, width=200, height=75, background="#023047", highlightbackground="#8ecae6", 
-               highlightthickness=2).place(x=150, y=260)
+zones_label_frame = LabelFrame(conf_lot_window, text="Select The Number of Zones", width=200, height=100).place(x=150, y=20)
+colors_label_frame = LabelFrame(conf_lot_window, text="Select The Number of Colors", width=200, height=100).place(x=150, y=140)
+seed_label_frame = LabelFrame(conf_lot_window, text="Enter a Seed or Leave Empty", width=200, height=75).place(x=150, y=260)
 
-# start
-Label(frame1, text="Select The Number of Zones", bg="#023047", fg="#8ecae6", anchor=CENTER, font=('Arial', 10, 'bold')).place(x=157, y=10)
-Label(frame2, text="Select The Number of Colors", bg="#023047", fg="#8ecae6", anchor=CENTER, font=('Arial', 10, 'bold')).place(x=156, y=130)
-Label(frame3, text="Enter a Seed or Leave Empty", bg="#023047", fg="#8ecae6", anchor=CENTER, font=('Arial', 10, 'bold')).place(x=155, y=250)
+Button(conf_lot_window, borderwidth=3, highlightthickness=3,  width=16, height=1, text='BACKTRACKING', font=("Arial", 8, 'bold'), 
+                       command=lambda: (conf_lot_window.destroy(), bt_bttn())).place(x=50, y=355)
+
+Button(conf_lot_window, borderwidth=3, highlightthickness=3, width=16, height=1, text='FORWARD CHECKING', font=("Arial", 8, 'bold'), 
+                       command=lambda: (conf_lot_window.destroy(), fc_bttn())).place(x=185, y=355) 
+ 
+Button(conf_lot_window, borderwidth=3, highlightthickness=3, width=16, height=1, text='ARC CONSISTENCY', font=("Arial", 8, 'bold'), 
+                       command=lambda: (conf_lot_window.destroy(), ac_bttn())).place(x=320, y=355)
 
 input1 = IntVar(None, 1)
 input2 = IntVar(None, 2)
 input3 = StringVar()
 
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="1", value=1, variable=input1).place(x=200, y=40)
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="2", value=2, variable=input1).place(x=200, y=60)
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="3", value=3, variable=input1).place(x=200, y=80)
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="4", value=4, variable=input1).place(x=270, y=40)
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="5", value=5, variable=input1).place(x=270, y=60)
-Radiobutton(frame1, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="6", value=6, variable=input1).place(x=270, y=80) 
+Radiobutton(zones_label_frame, text="1", value=1, variable=input1).place(x=200, y=40)
+Radiobutton(zones_label_frame, text="2", value=2, variable=input1).place(x=200, y=60)
+Radiobutton(zones_label_frame, text="3", value=3, variable=input1).place(x=200, y=80)
+Radiobutton(zones_label_frame, text="4", value=4, variable=input1).place(x=270, y=40)
+Radiobutton(zones_label_frame, text="5", value=5, variable=input1).place(x=270, y=60)
+Radiobutton(zones_label_frame, text="6", value=6, variable=input1).place(x=270, y=80) 
 
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="2", value=2, variable=input2).place(x=200, y=160)
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="3", value=3, variable=input2).place(x=200, y=180) 
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="4", value=4, variable=input2).place(x=200, y=200) 
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="5", value=5, variable=input2).place(x=270, y=160) 
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="6", value=6, variable=input2).place(x=270, y=180) 
-Radiobutton(frame2, selectcolor='#023047', bg='#023047', fg="#8ecae6", text="7", value=7, variable=input2).place(x=270, y=200) 
+Radiobutton(colors_label_frame, text="2", value=2, variable=input2).place(x=200, y=160)
+Radiobutton(colors_label_frame, text="3", value=3, variable=input2).place(x=200, y=180) 
+Radiobutton(colors_label_frame, text="4", value=4, variable=input2).place(x=200, y=200) 
+Radiobutton(colors_label_frame, text="5", value=5, variable=input2).place(x=270, y=160) 
+Radiobutton(colors_label_frame, text="6", value=6, variable=input2).place(x=270, y=180) 
+Radiobutton(colors_label_frame, text="7", value=7, variable=input2).place(x=270, y=200) 
 
-Entry(conf_lot_window, textvariable=input3).place(x=188, y=290)
-
-# Frame for button border.
-button_border1 = Frame(frame2, width=126, height=29, background='#023047', highlightbackground = "#8ecae6", 
-                       highlightthickness=3).place(x=68, y=353)
-
-Button(button_border1, bg='#023047', fg="#8ecae6", width=16, height=1, text='BACKTRACKING', font=("Arial", 8, 'bold'), 
-                       command=lambda: (conf_lot_window.destroy(), bt_bttn())).place(x=70, y=355)
-
-button_border2 = Frame(frame2, width=126, height=29, background='#023047', highlightbackground = "#8ecae6", 
-                       highlightthickness=3).place(x=194, y=353)
-Button(button_border2, bg='#023047', fg="#8ecae6", width=16, height=1, text='FORWARD CHECKING', font=("Arial", 8, 'bold'), 
-                       command=lambda: (conf_lot_window.destroy(), fc_bttn())).place(x=195, y=355) 
-
-button_border3 = Frame(frame2, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
-                       highlightthickness=3).place(x=319, y=353)
-Button(button_border3, bg='#023047', fg="#8ecae6", width=16, height=1, text='ARC CONSISTENCY', font=("Arial", 8, 'bold'), 
-                       command=lambda: (conf_lot_window.destroy(), ac_bttn())).place(x=320, y=355)
+Entry(conf_lot_window, textvariable=input3).place(x=188, y=292)
 
 conf_lot_window.mainloop()
 
@@ -133,15 +117,15 @@ lw_canvas = Canvas(lot_window, width=w, height=h+300) #width=1074, height=630
 lw_canvas.configure(background='#4f4f4f')
 lw_canvas.pack()
 
-red_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\RedC.png')).resize((45, 100)))  # Red car image
-blue_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\BlueC.png')).resize((45, 100)))  # Blue car image
-green_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\GreenC.png')).resize((45, 100)))  # Green car image
-yellow_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\YellowC.png')).resize((45, 100)))  # Yellow car image
-indigo_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\IndigoC.png')).resize((45, 100)))  # Indigo car image
-orange_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\OrangeC.png')).resize((45, 100)))  # orange car image
-violet_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\VioletC.png')).resize((45, 100)))  # Violet car image
-Number_of_Cars = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\\Number_of_Cars.png')))  # Number of Cars
-empty_spot_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Code Images\\EmptySpot.png')).resize((45, 100)))
+red_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\RedC.png')).resize((45, 100)))  # Red car image
+blue_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\BlueC.png')).resize((45, 100)))  # Blue car image
+green_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\GreenC.png')).resize((45, 100)))  # Green car image
+yellow_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\YellowC.png')).resize((45, 100)))  # Yellow car image
+indigo_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\IndigoC.png')).resize((45, 100)))  # Indigo car image
+orange_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\OrangeC.png')).resize((45, 100)))  # orange car image
+violet_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\VioletC.png')).resize((45, 100)))  # Violet car image
+Number_of_Cars = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\\Number_of_Cars.png')))  # Number of Cars
+empty_spot_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\\EmptySpot.png')).resize((45, 100)))
 
 parking_lot_image = PhotoImage(file=tuple_canvas[number_of_zones - 1])
 lw_canvas.create_image(0, 150, anchor=NW, image=parking_lot_image)
@@ -188,7 +172,7 @@ def display_results(status, start, fill_color='green'):
 
     result_window = Tk()
     result_window.title("Car Parking Lot")
-    result_window.iconbitmap(default=os.path.abspath('Code Images\parking_sign.ico'))
+    result_window.iconbitmap(default=os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_sign.ico'))
     result_window.configure(width=500, height=300)
     result_window.resizable(0, 0) #Don't allow resizing the window.
     result_window.geometry('500x300') # Fixing Geometry.
@@ -196,7 +180,7 @@ def display_results(status, start, fill_color='green'):
 
     result_window.protocol("WM_DELETE_WINDOW", on_closing)
 
-    result_canvas = Canvas(result_window, width=w, height=h+300, background='#023047') #width=1074, height=630
+    result_canvas = Canvas(result_window, width=w, height=h+300) #width=1074, height=630
     result_canvas.pack()
 
     result_canvas.create_text(125, 50, anchor=NW, font=("Arial", 40), fill=fill_color, text=status)
@@ -222,15 +206,15 @@ def display_results(status, start, fill_color='green'):
     
     python = sys.executable
 
-    Frame(result_canvas, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
-                       highlightthickness=3).place(x=118, y=249)
-    Button(result_canvas, bg='#023047', fg="#8ecae6", width=16, height=1, text='Start Over', font=("Arial", 8, 'bold'), 
-                       command=lambda: (result_window.destroy(), lot_window.destroy(), os.execl(python, python, *sys.argv))).place(x=120, y=250)
+    """ Frame(result_canvas, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
+          highlightthickness=3).place(x=118, y=249) """
+    Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Start Over', 
+           font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy(), os.execl(python, python, *sys.argv))).place(x=120, y=250)
 
-    Frame(result_canvas, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
-                       highlightthickness=3).place(x=258, y=249)
-    Button(result_canvas, bg='#023047', fg="#8ecae6", width=16, height=1, text='Exit', font=("Arial", 8, 'bold'), 
-                       command=lambda: (result_window.destroy(), lot_window.destroy())).place(x=260, y=250)
+    """ Frame(result_canvas, width=131, height=33, highlightbackground="black",
+          highlightthickness=3).place(x=258, y=249) """
+    Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Exit', 
+           font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy())).place(x=260, y=250)
 
     result_window.mainloop()
 
