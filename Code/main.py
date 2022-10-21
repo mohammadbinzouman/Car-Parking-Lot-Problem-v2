@@ -26,12 +26,12 @@ def ac_bttn():
 def on_closing():
         sys.exit(0)
 
-tuple_canvas = [os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneA.png'),
-                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneB.png'),
-                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneC.png'),
-                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneD.png'),
-                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneE.png'),
-                os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_lot_layout_zoneF.png')]
+tuple_canvas = [os.path.abspath('CodeImages\parking_lot_layout_zoneA.png'),
+                os.path.abspath('CodeImages\parking_lot_layout_zoneB.png'),
+                os.path.abspath('CodeImages\parking_lot_layout_zoneC.png'),
+                os.path.abspath('CodeImages\parking_lot_layout_zoneD.png'),
+                os.path.abspath('CodeImages\parking_lot_layout_zoneE.png'),
+                os.path.abspath('CodeImages\parking_lot_layout_zoneF.png')]
 
 all_parking_spots = ((35, 188), (87, 188), (139, 188), (191, 188), (243, 188), (35, 295), (87, 295), (139, 295), (191, 295), (243, 295),
                      (408, 188), (460, 188), (512, 188), (564, 188), (616, 188), (408, 295), (460, 295), (512, 295), (564, 295), (616, 295),
@@ -54,7 +54,7 @@ all_colors_tuple = ('red', 'blue', 'green', 'yellow', 'indigo', 'orange', 'viole
 
 conf_lot_window = Tk()
 conf_lot_window.title("Car Parking Lot")
-conf_lot_window.iconbitmap(default=os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_sign.ico'))
+conf_lot_window.iconbitmap(default=os.path.abspath('CodeImages\parking_sign.ico'))
 conf_lot_window.attributes("-topmost", True)
 conf_lot_window.configure(width=500, height=300)
 conf_lot_window.resizable(0, 0) #Don't allow resizing the window.
@@ -117,15 +117,15 @@ lw_canvas = Canvas(lot_window, width=w, height=h+300) #width=1074, height=630
 lw_canvas.configure(background='#4f4f4f')
 lw_canvas.pack()
 
-red_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\RedC.png')).resize((45, 100)))  # Red car image
-blue_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\BlueC.png')).resize((45, 100)))  # Blue car image
-green_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\GreenC.png')).resize((45, 100)))  # Green car image
-yellow_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\YellowC.png')).resize((45, 100)))  # Yellow car image
-indigo_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\IndigoC.png')).resize((45, 100)))  # Indigo car image
-orange_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\OrangeC.png')).resize((45, 100)))  # orange car image
-violet_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\VioletC.png')).resize((45, 100)))  # Violet car image
-Number_of_Cars = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\\Number_of_Cars.png')))  # Number of Cars
-empty_spot_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\\EmptySpot.png')).resize((45, 100)))
+red_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\RedC.png')).resize((45, 100)))  # Red car image
+blue_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\BlueC.png')).resize((45, 100)))  # Blue car image
+green_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\GreenC.png')).resize((45, 100)))  # Green car image
+yellow_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\YellowC.png')).resize((45, 100)))  # Yellow car image
+indigo_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\IndigoC.png')).resize((45, 100)))  # Indigo car image
+orange_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\OrangeC.png')).resize((45, 100)))  # orange car image
+violet_car_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\VioletC.png')).resize((45, 100)))  # Violet car image
+Number_of_Cars = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\\Number_of_Cars.png')))  # Number of Cars
+empty_spot_image = ImageTk.PhotoImage(PIL.Image.open(os.path.abspath('CodeImages\\EmptySpot.png')).resize((45, 100)))
 
 parking_lot_image = PhotoImage(file=tuple_canvas[number_of_zones - 1])
 lw_canvas.create_image(0, 150, anchor=NW, image=parking_lot_image)
@@ -172,7 +172,7 @@ def display_results(status, start, fill_color='green'):
 
     result_window = Tk()
     result_window.title("Car Parking Lot")
-    result_window.iconbitmap(default=os.path.abspath('Car-Parking-Lot-Problem-v2\CodeImages\parking_sign.ico'))
+    result_window.iconbitmap(default=os.path.abspath('CodeImages\parking_sign.ico'))
     result_window.configure(width=500, height=300)
     result_window.resizable(0, 0) #Don't allow resizing the window.
     result_window.geometry('500x300') # Fixing Geometry.
