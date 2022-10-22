@@ -90,7 +90,27 @@ Figure 2: all parking spots assigned **BUT**, the constraints were violated ther
 
 ## Explanation of The Algorithms
 
+### Backtracking
 
+<p> Backtracking algorithm has the simplest straightforward approach, it assigns each variable(parking spot) based on the preferred values if available from the domain and only backtrack when a parking spot has no valid value to be assigned with, so the algorithm backtracks to the previous parking spot trying next preferable value until no value can satisfy parking spot, so it backtrack to more previous parking spots, until a solution is found or no solution is found. see GIF below (same problem on all three algorithms). </p>
 
+### Forward Checking
+
+<p> ForwardChecking algorithm works as follows when a variable (Parking spot) gets assigned, adjacent parking spots remove values that might violate a constraint when chosen, thus filtring bad values, this process continues to the end unless one of the parking spots ends's up filtering all of its values, then it will backtrack to the previous parking spot and try assigning another value until a solution is reached or otherwise no solution found and the result is a failure. see GIF below (same problem on all three algorithms). </p>
+
+### Arc Consistency
+
+<p> Arc Consistency was implemented in the Car Parking Lot Problem as a preprocessor, reducing the parking spot domain of values starting from the first spot to the last spot respecting the constraints, the algorithm assigns each parking spot with preferable values if available from best to worst, and that’s called ascending order, if there are no solutions then the algorithm tries the descending order from worst to best, if no solutions then the algorithm stops and the result is a failure or can’t be solved using Arc Consistency algorithm. see GIF below (same problem on all three algorithms). </p>
 
 ## Performance Comparison of The Algorithms
+
+we will consider three performance factors:
+
+1. Time taken for a result.
+2. Success ratio.
+3. Most optimal solutions.
+The test on the algorithms is using the following characteristics, a parking lot with 3 zones and 4 color combinations, that is 30 parking spots and 30 random colored cars.
+
+Note that the domain for each test run is random, therefore not every domain generated has a solution.
+
+The test has ran 50 times, and the results for each algorithm is shown below:
