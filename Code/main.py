@@ -247,7 +247,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                 number_of_colors_left_dict[key] -= 1
 
                 temp = lw_canvas.create_image(all_parking_spots[spot_no][0], all_parking_spots[spot_no][1], anchor=NW, image=car_image_dict[color])
-                time.sleep(0.03)
+                #time.sleep(0.03)
                 lw_canvas.update()
                 
                 for c in range(number_of_parking_spots-1, -1, -1):
@@ -266,7 +266,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                     number_of_colors_left_dict[key] += 1
 
                     lw_canvas.itemconfig(temp, image=empty_spot_image)
-                    time.sleep(0.03)
+                    #time.sleep(0.05)
                     lw_canvas.update()
 
                     for c in range(number_of_parking_spots):
