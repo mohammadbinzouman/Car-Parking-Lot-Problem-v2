@@ -137,16 +137,7 @@ available_colors_list = available_colors_list_def(number_of_colors, all_colors_t
 max_num = number_of_parking_spots / 2  # maximum number of cars for one color.
 dict1 = {'red': max_num, 'blue': max_num, 'green': max_num, 'yellow': max_num, 'indigo': max_num, 'orange': max_num, 'violet': max_num}  # a dictionary with all the 7 colors with their maximum amount.
 
-#car_list = car_list_def(number_of_parking_spots, available_colors_list, dict1, seed)
-
-######################################
-#car_list = ['yellow', 'blue', 'green', 'orange', 'yellow', 'yellow', 'green', 'green', 'green', 'green', 'red', 'green', 'violet', 'yellow', 'red', 'violet', 'indigo', 'indigo', 'yellow', 'red', 'yellow', 'orange', 'indigo', 'blue', 'violet', 'orange', 'indigo', 'violet', 'orange', 'indigo', 'yellow', 'green', 'violet', 'violet', 'indigo', 'orange', 'yellow', 'blue', 'violet', 'orange', 'orange', 'blue', 'green', 'green', 'red', 'yellow', 'orange', 'indigo', 'blue', 'blue', 'indigo', 'blue', 'violet', 'red', 'violet', 'blue', 'orange', 'indigo', 'red', 'yellow']
-
-#car_list = ['red', 'yellow', 'red', 'green', 'red', 'orange', 'orange', 'violet', 'violet', 'green', 'indigo', 'red', 'orange', 'orange', 'blue', 'green', 'violet', 'blue', 'orange', 'orange', 'yellow', 'violet', 'yellow', 'red', 'green', 'indigo', 'yellow', 'yellow', 'yellow', 'violet', 'indigo', 'green', 'orange', 'blue', 'green', 'violet', 'red', 'blue', 'violet', 'violet', 'indigo', 'orange', 'yellow', 'indigo', 'blue', 'blue', 'orange', 'yellow', 'indigo', 'red', 'yellow', 'yellow', 'yellow', 'orange', 'orange', 'yellow', 'violet', 'orange', 'blue', 'orange']
-
-car_list = ['red', 'blue', 'yellow', 'green', 'red', 'blue', 'green', 'blue', 'green', 'yellow', 'blue', 'blue', 'green', 'red', 'green', 'yellow', 'blue', 'blue', 'yellow', 'blue', 'green', 'yellow', 'green', 'yellow', 'blue', 'blue', 'red', 'yellow', 'red', 'red', 'red', 'red', 'green', 'yellow', 'green', 'yellow', 'blue', 'yellow', 'red', 'green', 'blue', 'green', 'red', 'yellow', 'red', 'red', 'blue', 'blue', 'yellow', 'blue', 'blue', 'yellow', 'red', 'green', 'blue', 'red', 'green', 'blue', 'green', 'red']
-######################################
-
+car_list = car_list_def(number_of_parking_spots, available_colors_list, dict1, seed)
 
 car_image_dict = {'red': red_car_image, 'blue': blue_car_image, 'green': green_car_image, 'yellow': yellow_car_image,
                   'indigo': indigo_car_image, 'orange': orange_car_image, 'violet': violet_car_image}
@@ -215,13 +206,9 @@ def display_results(status, start, fill_color='green'):
     
     python = sys.executable
 
-    """ Frame(result_canvas, width=126, height=29, background='#023047', highlightbackground = "#8ecae6",
-          highlightthickness=3).place(x=118, y=249) """
     Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Start Over', 
            font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy(), os.execl(python, python, *sys.argv))).place(x=120, y=250)
 
-    """ Frame(result_canvas, width=131, height=33, highlightbackground="black",
-          highlightthickness=3).place(x=258, y=249) """
     Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Exit', 
            font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy())).place(x=260, y=250)
 
@@ -247,7 +234,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                 number_of_colors_left_dict[key] -= 1
 
                 temp = lw_canvas.create_image(all_parking_spots[spot_no][0], all_parking_spots[spot_no][1], anchor=NW, image=car_image_dict[color])
-                #time.sleep(0.03)
+                #time.sleep(0.3)
                 lw_canvas.update()
                 
                 for c in range(number_of_parking_spots-1, -1, -1):
@@ -255,7 +242,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                         temp2 = waiting_cars_temp[c][0]
                         lw_canvas.itemconfig(temp2, image=empty_spot_image)
                         waiting_cars_temp[c][1] = 'empty'
-                        #time.sleep(0.2)
+                        #time.sleep(0.3)
                         lw_canvas.update()
                         break
                 
@@ -266,7 +253,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                     number_of_colors_left_dict[key] += 1
 
                     lw_canvas.itemconfig(temp, image=empty_spot_image)
-                    #time.sleep(0.05)
+                    #time.sleep(0.3)
                     lw_canvas.update()
 
                     for c in range(number_of_parking_spots):
@@ -274,7 +261,7 @@ def Backtraking(assigned_spots_list, spot_no=0):
                             temp2 = waiting_cars_temp[c][0]
                             lw_canvas.itemconfig(temp2, image=car_image_dict[color])
                             waiting_cars_temp[c][1] = color
-                            #time.sleep(0.2)
+                            #time.sleep(0.3)
                             lw_canvas.update()
                             break
                     
