@@ -204,10 +204,12 @@ def display_results(status, start, fill_color='green'):
 
     result_canvas.update()
     
-    python = sys.executable
+    #python = sys.executable
 
+    sys.stdout.flush()
+    
     Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Start Over', 
-           font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy(), os.execl(python, python, *sys.argv))).place(x=120, y=250)
+           font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy(), os.execl(sys.executable, 'python', __file__, *sys.argv[1:]))).place(x=120, y=250)
 
     Button(result_canvas, borderwidth=3, highlightthickness=3, width=16, height=1, text='Exit', 
            font=("Arial", 8, 'bold'), command=lambda: (result_window.destroy(), lot_window.destroy())).place(x=260, y=250)
