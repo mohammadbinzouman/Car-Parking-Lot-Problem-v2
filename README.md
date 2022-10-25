@@ -1,6 +1,6 @@
 # Car Parking Lot Problem v2
  
-<p> The goal of this problem is to demonstrate some of the algorithms we studied in course CS340 (Artificial Intelligence). The notebook will cover the car parking lot problem in detail, explaining how the algorithms work and how well they perform, as well as comparing their performance relative to each other by highlighting visible differences and the time it takes them to solve the problem, and finally concluding with which algorithm provided the most optimal solution. </p>
+<p> ➡️The goal of this problem is to demonstrate some of the algorithms we studied in course CS340 (Artificial Intelligence). The notebook will cover the car parking lot problem in detail, explaining how the algorithms work and how well they perform, as well as comparing their performance relative to each other by highlighting visible differences and the time it takes them to solve the problem, and finally concluding with which algorithm provides the most optimal solution. </p>
 
 # Contents
  
@@ -14,11 +14,11 @@
 
 ## What is Car Parking Lot Problem
 
-It is a Constraints Satisfaction Problem (CSP), where you have a parking lot with a number of separate parking zones, each zone has the same number of parking spots. Each parking spot must be assigned a car without violating any constraints. The domain of all parking spots is a random combination from a number of colored cars, the solution is reached only when the parking lot has no other available parking spot.
+➡️It is a Constraints Satisfaction Problem (CSP), where you have a parking lot with a number of separate parking zones, each zone has the same number of parking spots. Each parking spot must be assigned a car without violating any constraints. The domain of all parking spots is a random combination from a number of colored cars, the solution is reached only when the parking lot has no other available parking spot.
 
 ## CSP Model Of The Car Parking Lot Problem
 
-In any CSP there are 3 components and the Car Parking Lot Problem is no different:
+➡️In any CSP there are 3 components and the Car Parking Lot Problem is no different:
 <ol>
  <li> Variables </li>
  <li> Domains </li>
@@ -33,7 +33,7 @@ So, **what does Variables represent in the Car Parking Lot Problem?** Each parki
  
  <br />
  
-<p> Consider the constraints graph below to see what the structure of relations or constraints are. The graph is based on a simple two-zone parking lot with 20 parking spots. </p>
+<p> ➡️Consider the constraints graph below to see what the structure of relations or constraints are. The graph is based on a simple two-zone parking lot with 20 parking spots. </p>
 
 ![Two zone parking lot.png](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/Two%20zone%20parking%20lot.png)
  
@@ -47,7 +47,7 @@ So, **what does Variables represent in the Car Parking Lot Problem?** Each parki
 
 <br />
 
-<p> And for what a solution should look like in the Car Parking Lot Problem, a solution is reached if and only if the given parking lot has all its parking spots assigned appropriately, in respect to the constraints on each parking spot, some may have no solution and some have many solutions but, when there’s a solution there’s always an optimal solution. Consider the two figures example below of a 3 zones parking lot with 30 random color cars, where figure 1 with a solution and figure 2 without a solution. </p>
+<p> ➡️And for what a solution should look like in the Car Parking Lot Problem, a solution is reached if and only if the given parking lot has all its parking spots assigned appropriately, in respect to the constraints on each parking spot, some may have no solution and some have many solutions but, when there’s a solution there’s always an optimal solution. Consider the two figures example below of a 3 zones parking lot with 30 random color cars, where figure 1 with a solution and figure 2 without a solution. </p>
 
 ![Sorted Car Parking Lot.png](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/Sorted%20Car%20Parking%20Lot.png)
 Figure 1: all parking spots assigned, without violating any constraints.
@@ -59,31 +59,31 @@ Figure 2: all parking spots assigned **BUT**, the constraints were violated ther
 
 <br />
 
-<p> Here is an example shown in the GIF presenting a solution, for a 6 zones parking lot with the domain having 60 cars which was produced randomly from a 4 possible car colors combination. </p>
+<p> ➡️Here is an example shown in the GIF presenting a solution, for a 6 zones parking lot with the domain having 60 cars which was produced randomly from a 4 possible car colors combination. </p>
 
 ![SortingGif.gif](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/SortingGif.gif)
 
 ## Problem Formulation
 
-<p> The initial state of the Car Parking Lot Problem is an empty parking lot. As shown in the figure below. </p>
+<p> ➡️The initial state of the Car Parking Lot Problem is an empty parking lot. As shown in the figure below. </p>
 
 ![parking_lot_layout.PNG](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/parking_lot_layout.png)
 
 <br />
 
-<p> The actions in the Car Parking Lot Problem are to assign each adjacent parking spot from first parking spot to the last parking spot. see figure below. </p>
+<p> ➡️The actions in the Car Parking Lot Problem are to assign each adjacent parking spot from first parking spot to the last parking spot. see figure below. </p>
 
 ![Intial State.png](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/Intial%20State.png)
 
 <br />
 
-<p> A state space graph showing the initial state, actions and goal state. </p>
+<p> ➡️A state space graph showing the initial state, actions and goal state. </p>
 
 ![Space State.png](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/Space%20State.png)
 
 <br />
 
-<p> The heuristic used for the Car Parking Lot Problem implementation is to start from the first parking spot to the last parking spot, taking in mind the preferred value for each variable and is as follows: red->blue->green->yellow->indigo->orange->violet of the order from best to worst, obviously it depends on the random generated domain. Observe the GIF below. </p>
+<p> ➡️The heuristic used for the Car Parking Lot Problem implementation is to start from the first parking spot to the last parking spot, taking in mind the preferred value for each variable and is as follows: red->blue->green->yellow->indigo->orange->violet of the order from best to worst, obviously it depends on the random generated domain. Observe the GIF below. </p>
 
 ![1ZoneSortingGif.gif](https://github.com/mohammadbinzouman/Car-Parking-Lot-Problem-v2/blob/main/Readme%20file%20images/1ZoneSortingGif.gif)
 *Parking lot with 1 zone solved from a random generated domain using 7 possible colors.
@@ -92,31 +92,18 @@ Figure 2: all parking spots assigned **BUT**, the constraints were violated ther
 
 ### Backtracking
 
-<p> Backtracking algorithm has the simplest straightforward approach, it assigns each variable(parking spot) based on the preferred values if available from the domain and only backtrack when a parking spot has no valid value to be assigned with, so the algorithm backtracks to the previous parking spot trying next preferable value until no value can satisfy parking spot, so it backtrack to more previous parking spots, until a solution is found. </p>
+<p> ➡️Backtracking algorithm has the simplest straightforward approach, it assigns each variable(parking spot) based on the preferred values if available from the domain and only backtrack when a parking spot has no valid value to be assigned with, so the algorithm backtracks to the previous parking spot trying next preferable value until no value can satisfy parking spot, so it backtrack to more previous parking spots, until a solution is found. </p>
 
 ### Forward Checking
 
-<p> ForwardChecking algorithm works as follows when a variable (Parking spot) gets assigned, adjacent parking spots remove values that might violate a constraint when chosen, thus filtring bad values, this process continues to the end unless one of the parking spots ends's up filtering all of its values, then it will backtrack to the previous parking spot and try assigning another value until a solution is reached. </p>
+<p> ➡️ForwardChecking algorithm works as follows when a variable (Parking spot) gets assigned, adjacent parking spots remove values that might violate a constraint when chosen, thus filtring bad values, this process continues to the end unless one of the parking spots ends's up filtering all of its values, then it will backtrack to the previous parking spot and try assigning another value until a solution is reached. </p>
 
 ### Arc Consistency
 
-<p> Arc Consistency was implemented in the Car Parking Lot Problem as a preprocessor, reducing the parking spot domain of values for all variables after an assignement, thus detecting failure earlier than forward checking, starting from the first spot to the last spot respecting the constraints, the algorithm assigns each parking spot with preferable values if available from best to worst. </p>
+<p> ➡️Arc Consistency was implemented in the Car Parking Lot Problem as a preprocessor, reducing the parking spot domain of values for all variables after an assignement, thus detecting failure earlier than forward checking, starting from the first spot to the last spot respecting the constraints, the algorithm assigns each parking spot with preferable values if available from best to worst. </p>
 
 ## Performance Comparison of The Algorithms
 
-We will consider three performance factors:
+➡️The test on the algorithms is using the following characteristics, a parking lot with **3 zones** and **4 color combinations**, that is 30 parking spots and 30 random colored cars.
 
-1. Time taken for a result.
-2. Most optimal solutions.
-
-<br />
-
-The test on the algorithms is using the following characteristics, a parking lot with **3 zones** and **4 color combinations**, that is 30 parking spots and 30 random colored cars.
-
-<br />
-
-The test will run using 50 domains, whitch will be tested on the 3 algorithms for more accurate results.
-
-<br />
-
-The results for each algorithm is shown below:
+The performance of the three algorithms is comparable in that they solve the same problem in a similar amount of time but when the GUI speed is reduced, you can see how each method works somewhat differently. To summarize, Arc Consistency is the highest performing method, followed by Forward Checking and finally Backtracking.
